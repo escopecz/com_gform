@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Step details view" option="View">
+	</layout>
+        <fields name="request">
+		<fieldset name="request">
+
+			<field name="id" type="sql"
+				default="0"
+				description="Select step which you want to display."
+				query="SELECT id, title FROM #__gform_steps" 
+                                key_field="id" 
+                                value_field="title"
+				label="Step"
+				required="true"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

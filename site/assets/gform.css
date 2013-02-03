@@ -1,0 +1,22 @@
+.ss-item{
+    border: 1px solid #E1E9E9;
+    padding: 20px;
+}
+.ss-item.ss-section-header{
+    border: 0;
+    padding: 40px 0 0 0;
+}
+.ss-item ul li{
+    list-style: none;
+}
+.ss-scale table{
+    width: 100%;
+    margin: 20px 0 0 0;
+    text-align: center;
+    color: #676662;
+}
+.ss-scale table td, .ss-scale table tr{
+    border: 0px solid transparent;
+}
+
+
