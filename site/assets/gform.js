@@ -15,6 +15,13 @@
             $('.item_fields .html').slideUp('slow', function(){
                 $(this).empty().append(html).slideDown('slow');
             });
+            
+            //execute scripts loaded via ajax requests
+            var dom = $(result);
+            dom.filter('script').each(function(){
+                $.globalEval(this.text || this.textContent || this.innerHTML || '');
+            });
+            
             $('.html form').on('submit', function(){
                 $().validateGForm();
                 submitted=true;
