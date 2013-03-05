@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="1.6.0" method="upgrade">
-    <name>com_gform</name>
+<extension type="component" version="2.5.0" method="upgrade">
+    <name>GForm</name>
     <creationDate>2013-01-11</creationDate>
     <copyright>Copyright (C) 2013 Jan Linhart | escope.cz. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
