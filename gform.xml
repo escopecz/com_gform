@@ -3,18 +3,27 @@
     <name>GForm</name>
     <creationDate>2013-01-11</creationDate>
     <copyright>Copyright (C) 2013 Jan Linhart | escope.cz. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <license>GNU General Public License version 2 or later</license>
     <author>Jan Linhart</author>
     <authorEmail>admin@escope.cz</authorEmail>
     <authorUrl>http://escope.cz</authorUrl>
-    <version>1.0.0</version>
-    <description>Component for advanced use of Google forms</description>
+    <version>1.0.1</version>
+    
+    <description>
+        <![CDATA[
+            <p>
+                Component for advanced use of Google forms. More information at 
+                <a href="http://www.escope.cz/en/extensions/documentation/96-gform" target="_blank">documentation</a>.
+            </p>
+        ]]>
+    </description>
     
     <install>
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
         </sql>
     </install>
+    
     <uninstall>
         <sql>
             <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
@@ -32,15 +41,19 @@
         <folder>controllers</folder>
         <folder>helpers</folder>
     </files>
+    
     <languages folder="site">
-        <language tag="en-GB">language/en-GB.com_gform.ini
-        </language>
+        <language tag="en-GB">language/en-GB.com_gform.ini</language>
     </languages>
+    
     <administration>
+        
         <menu img="components/com_gform/assets/images/s_com_gform.png" >COM_GFORM</menu>
+        
         <submenu>
             <menu link="option=com_gform&amp;view=steps" view="steps" img="components/com_gform/assets/images/s_steps.png" alt="Gform/Steps">COM_GFORM_TITLE_STEPS</menu>
         </submenu>
+        
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
@@ -55,11 +68,12 @@
             <folder>tables</folder>
             <folder>views</folder>
         </files>
+        
         <languages folder="administrator">
-            <language tag="en-GB">language/en-GB.com_gform.ini
-            </language>
-            <language tag="en-GB">language/en-GB.com_gform.sys.ini
-            </language>
+            <language tag="en-GB">language/en-GB.com_gform.ini</language>
+            <language tag="en-GB">language/en-GB.com_gform.sys.ini</language>
         </languages>
+        
     </administration>
+    
 </extension>

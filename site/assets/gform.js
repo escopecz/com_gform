@@ -26,6 +26,8 @@
                 $().validateGForm();
                 submitted=true;
             });
+            
+            
         });
     };
     
@@ -61,8 +63,7 @@
     
     $.fn.countDownGForm = function(url, count){       
         var counter = setInterval(timer, 1000);
-        setTimeout(
-            function() { 
+        setTimeout(function(){ 
                 $().loadNewStep(url);
             } , count * 1000
         );

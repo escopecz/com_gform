@@ -107,6 +107,20 @@ class GformModelStep extends JModelForm
             
             $this->_item->html = str_replace('{sessionid}', JFactory::getSession()->getId(), $this->_item->html);
             
+            $link = '<a class="nextStep btn" href="'.JRoute::_('index.php?option=com_gform&task=step.next&id='.$this->_item->id).'">';
+            $link .= JText::_('COM_GFORM_BUTTON_NEXT_STEP');
+            $link .= '</a>';
+            $this->_item->html = str_replace('{next}', $link, $this->_item->html);
+            $this->_item->html .= "
+                    <script>
+                        jQuery('a.nextStep').on('click', function(event){
+                            event.preventDefault();
+                            var url = jQuery(this).attr('href') + '&tmpl=component';
+                            jQuery().loadNewStep(url);
+                        });            
+                    </script>
+                ";
+            
             if($this->_item->countdown > 0){
                 $this->_item->html = str_replace('{time}', '<span id="GFormTime">'.$this->_item->countdown.'</span>', $this->_item->html);
                 $this->_item->html .= '
