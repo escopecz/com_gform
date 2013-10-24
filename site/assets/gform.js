@@ -9,9 +9,12 @@
     $.fn.loadNewStep = function(url){
         $.ajax({
             url: url,
-            context: document.body
+            dataType: 'html'
+            
         }).done(function(result) {
+
             var html = $(result).find('.item_fields .html').html();
+            
             $('.item_fields .html').slideUp('slow', function(){
                 $(this).empty().append(html).slideDown('slow');
             });
@@ -26,8 +29,6 @@
                 $().validateGForm();
                 submitted=true;
             });
-            
-            
         });
     };
     
@@ -43,7 +44,15 @@
                 $(this).css('border','1px solid red');
             }
         });
-        
+        $('.ss-item-required.ss-select').each(function(){
+            if($(this).find('select').val()){
+                validation.push(true);
+                $(this).css('border','1px solid transparent');
+            } else {
+                validation.push(false);
+                $(this).css('border','1px solid red');
+            }
+        });
         $('.ss-item-required.ss-text').each(function(){
             if($(this).find('input[type=text]').val()){
                 validation.push(true);
@@ -63,7 +72,8 @@
     
     $.fn.countDownGForm = function(url, count){       
         var counter = setInterval(timer, 1000);
-        setTimeout(function(){ 
+        setTimeout(
+            function() { 
                 $().loadNewStep(url);
             } , count * 1000
         );
