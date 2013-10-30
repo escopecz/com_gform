@@ -20,10 +20,10 @@
             });
             
             //execute scripts loaded via ajax requests
-            var dom = $(result);
-            dom.filter('script').each(function(){
-                $.globalEval(this.text || this.textContent || this.innerHTML || '');
-            });
+			var dom = $(result);
+	        dom.filter('script').each(function(){
+	            $.globalEval(this.text || this.textContent || this.innerHTML || '');
+	        });
             
             $('.html form').on('submit', function(){
                 $().validateGForm();
@@ -35,8 +35,15 @@
     $.fn.validateGForm = function(){
         var validation = [];
         
-        $('.ss-item-required.ss-radio, .ss-item-required.ss-scale').each(function(){
+        $('.ss-item-required.ss-radio, .ss-item-required.ss-scale, .ss-item-required.ss-checkbox').each(function(){
             if($(this).find('input[type=radio]:checked').val()){
+                validation.push(true);
+                $(this).css('border','1px solid transparent');
+            } else {
+                validation.push(false);
+                $(this).css('border','1px solid red');
+            }
+            if($(this).find('input[type=checkbox]:checked').val()){
                 validation.push(true);
                 $(this).css('border','1px solid transparent');
             } else {
