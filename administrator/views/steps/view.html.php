@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * View class for a list of Gform.
  */
-class GformViewSteps extends JView
+class GformViewSteps extends JViewLegacy
 {
 	protected $items;
 	protected $pagination;

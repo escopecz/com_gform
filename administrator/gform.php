@@ -1,8 +1,6 @@
 <?php
 /**
- * @version     1.0.0
- * @package     com_gform
- * @copyright   Copyright (C) 2013. All rights reserved.
+ * @copyright   Copyright (C) 2013 Jan Linhart. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Jan Linhart <admin@escope.cz> - http://escope.cz
  */
@@ -10,6 +8,11 @@
 
 // no direct access
 defined('_JEXEC') or die;
+
+if(!defined('DS'))
+{
+	define('DS',DIRECTORY_SEPARATOR);
+}
 
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_gform')) 
@@ -20,6 +23,6 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_gform'))
 // Include dependancies
 jimport('joomla.application.component.controller');
 
-$controller	= JController::getInstance('Gform');
+$controller	= JControllerLegacy::getInstance('Gform');
 $controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

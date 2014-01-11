@@ -1,8 +1,6 @@
 <?php
 /**
- * @version     1.0.0
- * @package     com_gform
- * @copyright   Copyright (C) 2013. All rights reserved.
+ * @copyright   Copyright (C) 2013 Jan Linhart. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  * @author      Jan Linhart <admin@escope.cz> - http://escope.cz
  */

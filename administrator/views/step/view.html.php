@@ -1,9 +1,7 @@
 <?php
 /**
- * @version     1.0.0
- * @package     com_gform
- * @copyright   Copyright (C) 2013. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright   Copyright (C) 2013 Jan Linhart. All rights reserved.
+ * @license     GNU General Public License version 2 or later
  * @author      Jan Linhart <admin@escope.cz> - http://escope.cz
  */
 
@@ -15,7 +13,7 @@ jimport('joomla.application.component.view');
 /**
  * View to edit
  */
-class GformViewStep extends JView
+class GformViewStep extends JViewLegacy
 {
 	protected $state;
 	protected $item;

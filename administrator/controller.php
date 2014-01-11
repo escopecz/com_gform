@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class GformController extends JController
+class GformController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
@@ -20,13 +20,12 @@ class GformController extends JController
 	 * @param	array			$urlparams	An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
 	 *
 	 * @return	JController		This object to support chaining.
-	 * @since	1.5
 	 */
 	public function display($cachable = false, $urlparams = false)
 	{
 		require_once JPATH_COMPONENT.'/helpers/gform.php';
 
-		$view		= JFactory::getApplication()->input->getCmd('view', 'steps');
+		$view = JFactory::getApplication()->input->getCmd('view', 'steps');
         JFactory::getApplication()->input->set('view', $view);
 
 		parent::display($cachable, $urlparams);
