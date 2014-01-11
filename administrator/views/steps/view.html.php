@@ -30,6 +30,12 @@ class GformViewSteps extends JViewLegacy
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 
+		$version = new JVersion;
+		if(version_compare($version->RELEASE, 3, '>'))
+		{
+			$this->setLayout('default_j3');
+		}
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			throw new Exception(implode("\n", $errors));
