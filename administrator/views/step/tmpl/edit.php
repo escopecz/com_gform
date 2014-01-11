@@ -2,7 +2,7 @@
 
 /**
  * @copyright   Copyright (C) 2013. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later
  * @author      Jan Linhart <admin@escope.cz> - http://escope.cz
  */
 

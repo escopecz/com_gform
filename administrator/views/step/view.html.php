@@ -28,6 +28,12 @@ class GformViewStep extends JViewLegacy
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
 
+		$version = new JVersion;
+		if(version_compare($version->RELEASE, 3, '>'))
+		{
+			$this->setLayout($this->getLayout().'_j3');
+		}
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
             throw new Exception(implode("\n", $errors));

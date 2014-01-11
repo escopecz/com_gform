@@ -17,7 +17,6 @@ class GformControllerSteps extends JControllerAdmin
 {
 	/**
 	 * Proxy for getModel.
-	 * @since	1.6
 	 */
 	public function getModel($name = 'step', $prefix = 'GformModel')
 	{
@@ -30,8 +29,6 @@ class GformControllerSteps extends JControllerAdmin
 	 * Method to save the submitted ordering values for records via AJAX.
 	 *
 	 * @return  void
-	 *
-	 * @since   3.0
 	 */
 	public function saveOrderAjax()
 	{
@@ -58,7 +55,4 @@ class GformControllerSteps extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
-    
-    
-    
 }

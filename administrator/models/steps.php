@@ -115,7 +115,7 @@ class GformModelsteps extends JModelList
 
 	    
 		// Join over the user field 'created_by'
-		$query->select('created_by.name AS created_by');
+		$query->select('created_by.name AS created_by, created_by.id AS created_by_id');
 		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');
 
 	    // Filter by published state

@@ -34,7 +34,7 @@ class GformViewSteps extends JViewLegacy
 		$version = new JVersion;
 		if(version_compare($version->RELEASE, 3, '>'))
 		{
-			$this->setLayout('default_j3');
+			$this->setLayout($this->getLayout().'_j3');
 		}
 
 		// Check for errors.

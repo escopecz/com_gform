@@ -5,14 +5,14 @@
 		description="COM_GFORM_COMPONENT_DESC"
 	>
 
-        <field name="test"
+        <!-- <field name="test"
              type="radio"
              default="1"
              label="COM_GFORM_TEST_LABEL"
              description="COM_GFORM_TEST_DESC">
                  <option value="0">JHIDE</option>
                  <option value="1">JSHOW</option>
-         </field>
+         </field> -->
 
 	</fieldset>
 

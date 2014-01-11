@@ -25,12 +25,12 @@ $saveOrder	= $listOrder == 'a.ordering';
 
 if ($saveOrder)
 {
-	$saveOrderingUrl = 'index.php?option=com_gform&task=articles.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+	$saveOrderingUrl = 'index.php?option=com_gform&task=steps.saveOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'stepList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 
 // $sortFields = $this->getSortFields();
-$assoc		= JLanguageAssociations::isEnabled();
+// $assoc		= JLanguageAssociations::isEnabled();
 
 ?>
 <script type="text/javascript">
@@ -85,19 +85,10 @@ $assoc		= JLanguageAssociations::isEnabled();
 							<?php echo JHtml::_('searchtools.sort', 'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
 						<th width="10%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'COM_GFORM_STEPS_COUNTDOWN', 'a.countdown', $listDirn, $listOrder); ?>
 						</th>
 						<th width="10%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort',  'JAUTHOR', 'a.created_by', $listDirn, $listOrder); ?>
-						</th>
-						<th width="5%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_LANGUAGE', 'language', $listDirn, $listOrder); ?>
-						</th>
-						<th width="10%" class="nowrap hidden-phone">
-							<?php echo JHtml::_('searchtools.sort', 'JDATE', 'a.created', $listDirn, $listOrder); ?>
-						</th>
-						<th width="10%">
-							<?php echo JHtml::_('searchtools.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -111,10 +102,10 @@ $assoc		= JLanguageAssociations::isEnabled();
 					$canCreate  = $user->authorise('core.create',     'com_gform.category.'.$item->catid);
 					$canEdit    = $user->authorise('core.edit',       'com_gform.step.'.$item->id);
 					$canCheckin = $user->authorise('core.manage',     'com_checkin') || $item->checked_out == $userId || $item->checked_out == 0;
-					$canEditOwn = $user->authorise('core.edit.own',   'com_gform.step.'.$item->id) && $item->created_by == $userId;
+					$canEditOwn = $user->authorise('core.edit.own',   'com_gform.step.'.$item->id) && $item->created_by_id == $userId;
 					$canChange  = $user->authorise('core.edit.state', 'com_gform.step.'.$item->id) && $canCheckin;
 					?>
-					<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->catid; ?>">
+					<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id; ?>">
 						<td class="order nowrap center hidden-phone">
 							<?php
 							$iconClass = '';
@@ -169,36 +160,16 @@ $assoc		= JLanguageAssociations::isEnabled();
 								<?php else : ?>
 									<span title="<?php echo JText::sprintf('JFIELD_ALIAS_LABEL', $this->escape($item->alias)); ?>"><?php echo $this->escape($item->title); ?></span>
 								<?php endif; ?>
-								<div class="small">
-									<?php echo JText::_('JCATEGORY') . ": " . $this->escape($item->category_title); ?>
-								</div>
 							</div>
 						</td>
 						<td class="small hidden-phone">
-							<?php echo $this->escape($item->access_level); ?>
+							<?php echo $this->escape($item->countdown); ?>
 						</td>
 						<td class="small hidden-phone">
-							<?php if ($item->created_by_alias) : ?>
-								<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-								<?php echo $this->escape($item->author_name); ?></a>
-								<p class="smallsub"> <?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->created_by_alias)); ?></p>
-							<?php else : ?>
-								<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
-								<?php echo $this->escape($item->author_name); ?></a>
+							<?php if ($item->created_by) : ?>
+								<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id='.(int) $item->created_by_id); ?>" title="<?php echo JText::_('JAUTHOR'); ?>">
+								<?php echo $this->escape($item->created_by); ?></a>
 							<?php endif; ?>
-						</td>
-						<td class="small hidden-phone">
-							<?php if ($item->language == '*'):?>
-								<?php echo JText::alt('JALL', 'language'); ?>
-							<?php else:?>
-								<?php echo $item->language_title ? $this->escape($item->language_title) : JText::_('JUNDEFINED'); ?>
-							<?php endif;?>
-						</td>
-						<td class="nowrap small hidden-phone">
-							<?php echo JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC4')); ?>
-						</td>
-						<td class="center">
-							<?php echo (int) $item->hits; ?>
 						</td>
 						<td class="center hidden-phone">
 							<?php echo (int) $item->id; ?>
@@ -209,8 +180,6 @@ $assoc		= JLanguageAssociations::isEnabled();
 			</table>
 		<?php endif; ?>
 		<?php echo $this->pagination->getListFooter(); ?>
-		<?php //Load the batch processing form. ?>
-		<?php //echo $this->loadTemplate('batch'); ?>
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
