@@ -91,9 +91,11 @@
                clearInterval(counter);
                return;
             }
+            console.log(count);
             $('#GFormTime').text(count);
         }
     }
+    // console.log($.countDownGForm(20));
 })( jQuery );
 
 var submitted = false;
