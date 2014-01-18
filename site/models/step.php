@@ -117,11 +117,13 @@ class GformModelStep extends JModelForm
         $this->_item->html = str_replace('{next}', $link, $this->_item->html);
         $this->_item->html .= "
                 <script>
+                $(function() {
                     jQuery('a.nextStep').on('click', function(event){
                         event.preventDefault();
                         var url = jQuery(this).attr('href') + '&tmpl=component';
                         jQuery().loadNewStep(url);
-                    });            
+                    }); 
+                });           
                 </script>
             ";
         
@@ -130,10 +132,12 @@ class GformModelStep extends JModelForm
             $this->_item->html = str_replace('{time}', '<span id="GFormTime">'.$this->_item->countdown.'</span>', $this->_item->html);
             $this->_item->html .= '
                 <script>
+                $(function() {
                     jQuery().countDownGForm(
                         \''.JRoute::_('index.php?option=com_gform&task=step.next&id='.$this->_item->id.'&tmpl=component').'\', 
                         '.$this->_item->countdown.'
-                    );             
+                    );
+                });             
                 </script>
             ';
         }
